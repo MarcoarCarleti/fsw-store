@@ -14,7 +14,7 @@ export function Header() {
   return (
     <Card className="flex items-center justify-between p-[1.875rem]">
       <Sheet>
-        
+
         <SheetTrigger asChild>
           <Button size="icon" variant="outline">
             <MenuIcon />
@@ -26,7 +26,7 @@ export function Header() {
             Menu
           </SheetHeader>
 
-          <div className="mt-2 flex flex-col gap-3">
+          <div className="mt-2 flex flex-col gap-3">       
             <Button variant="outline" className="w-full justify-start gap-2">
               <LogInIcon size={16} />
               Fazer Login
@@ -46,6 +46,7 @@ export function Header() {
               <ListOrderedIcon size={16} />
               Catalogo
             </Button>
+
           </div>
 
         </SheetContent>
