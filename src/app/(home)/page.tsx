@@ -1,7 +1,7 @@
 import { Categories } from "./components/categories";
 import { prismaClient } from "@/lib/prisma";
 import { ProductsList } from "../../components/ui/products-list";
-import { SectionTitle } from "./components/section-title";
+import { SectionTitle } from "../../components/ui/section-title";
 import { PromoBanner } from "./components/promo-banner";
 
 export default async function Home() {
