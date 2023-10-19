@@ -27,7 +27,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const handleAddToCartClick = () => {
     addProductToCart({ ...product, quantity });
-    toast(`${product.name} - Adicionado ao carrinho`, {
+    toast.success(`Adicionado ao carrinho`, {
       style: {
         background: "#5033C3",
         color: "white",
