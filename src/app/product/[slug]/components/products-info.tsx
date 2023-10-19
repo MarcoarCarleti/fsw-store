@@ -6,14 +6,13 @@ import { ProductsWithTotalPrice } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 interface ProductInfoProps {
   product: ProductsWithTotalPrice;
 }
 
-const ProductInfo = ({
-  product,
-}: ProductInfoProps) => {
+const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
 
   const { addProductToCart } = useContext(CartContext);
@@ -27,7 +26,13 @@ const ProductInfo = ({
   };
 
   const handleAddToCartClick = () => {
-    addProductToCart({...product, quantity})
+    addProductToCart({ ...product, quantity });
+    toast.success(`${product.name} | Adicionado ao carrinho`, {
+      style: {
+        background: "#5033C3",
+        color: "white",
+      },
+    });
   };
 
   return (
@@ -74,7 +79,10 @@ const ProductInfo = ({
         <p className="text-justify text-sm opacity-60">{product.description}</p>
       </div>
 
-      <Button className="mt-8 font-bold uppercase" onClick={handleAddToCartClick}>
+      <Button
+        className="mt-8 font-bold uppercase"
+        onClick={handleAddToCartClick}
+      >
         Adicionar ao carrinho
       </Button>
 
@@ -92,6 +100,7 @@ const ProductInfo = ({
         </div>
         <p className="text-xs font-bold">Frete Grátis</p>
       </div>
+      <Toaster />
     </div>
   );
 };
