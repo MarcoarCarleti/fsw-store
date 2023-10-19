@@ -27,11 +27,12 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const handleAddToCartClick = () => {
     addProductToCart({ ...product, quantity });
-    toast.success(`${product.name} | Adicionado ao carrinho`, {
+    toast(`${product.name} - Adicionado ao carrinho`, {
       style: {
         background: "#5033C3",
         color: "white",
       },
+      duration: 1000,
     });
   };
 
