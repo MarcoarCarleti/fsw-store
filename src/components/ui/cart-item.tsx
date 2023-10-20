@@ -35,11 +35,11 @@ const CartItem = ({ product }: CartItemProps) => {
         <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
           <Image
             src={product.imageUrls[0]}
-            alt={product.name}
-            height={0}
             width={0}
+            height={0}
             sizes="100vw"
-            className="h-auto max-h-[70%] w-auto max-w-[70%]"
+            alt={product.name}
+            className="h-auto max-h-[70%] w-auto max-w-[80%]"
           />
         </div>
 
