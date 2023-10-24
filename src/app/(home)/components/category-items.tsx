@@ -12,7 +12,7 @@ export function CategoryItem({ category }: CategoryItemProps) {
     <Link href={`/category/${category.slug}`}>
       <Badge
         variant="outline"
-        className="flex items-center justify-center gap-2 rounded-lg py-3 transition-all hover:bg-zinc-700 hover:opacity-75"
+        className="flex items-center justify-center gap-2 rounded-lg py-3 transition-all hover:bg-zinc-700 hover:opacity-75 xl:h-12 xl:flex-grow xl:w-52"
       >
         {categoryIcon[category.slug as keyof typeof categoryIcon]}
         <span className="text-xs font-bold">{category.name}</span>
