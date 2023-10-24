@@ -15,10 +15,13 @@ export function ProductItem({ product, className }: ProductItemProps) {
   return (
     <Link
       href={`/product/${product.slug}`}
-      className={cn("flex min-w-[156px] flex-col gap-4", className)}
+      className={cn(
+        "flex min-w-[156px] flex-col gap-4 xl:min-h-[190px] xl:min-w-[180px]",
+        className,
+      )}
     >
       <div className="flex flex-col gap-4">
-        <div className=" relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
+        <div className=" relative flex h-[170px] xl:h-[190px] w-full items-center justify-center rounded-lg bg-accent">
           <Image
             src={product.imageUrls[0]}
             width={0}
