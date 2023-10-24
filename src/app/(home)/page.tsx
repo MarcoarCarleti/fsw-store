@@ -3,6 +3,7 @@ import { prismaClient } from "@/lib/prisma";
 import { ProductsList } from "../../components/ui/products-list";
 import { SectionTitle } from "../../components/ui/section-title";
 import { PromoBanner } from "./components/promo-banner";
+import Link from "next/link";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
@@ -30,38 +31,50 @@ export default async function Home() {
   });
   return (
     <div className="flex flex-col gap-8 py-8">
-      <PromoBanner
-        src="/banner-discount.png"
-        alt="Até 55% de desconto esse mês"
-      />
+      <Link href="/deals">
+        <PromoBanner
+          src="/banner-discount.png"
+          alt="Até 55% de desconto esse mês"
+        />
+      </Link>
       <div className=" px-5">
         <Categories />
       </div>
 
       <div>
-        <SectionTitle>Ofertas</SectionTitle>
+        <SectionTitle>
+          <Link href="/deals">Ofertas</Link>
+        </SectionTitle>
         <ProductsList products={deals} />
       </div>
 
-      <PromoBanner
-        src="/banner-mouses.png"
-        alt="Até 55% de desconto em mouses"
-      />
+      <Link href="/category/mouses">
+        <PromoBanner
+          src="/banner-mouses.png"
+          alt="Até 55% de desconto em mouses"
+        />
+      </Link>
 
       <div>
-        <SectionTitle>Teclados</SectionTitle>
+        <SectionTitle>
+          <Link href="/category/keyboards">Teclados</Link>
+        </SectionTitle>
         <ProductsList products={keyboards} />
       </div>
 
       <div>
-        <PromoBanner
-          src="/banner-fones.png"
-          alt="Até 20% de desconto em Fones"
-        />
+        <Link href="/category/headphones">
+          <PromoBanner
+            src="/banner-fones.png"
+            alt="Até 20% de desconto em Fones"
+          />
+        </Link>
       </div>
 
       <div>
-        <SectionTitle>Mouses</SectionTitle>
+        <SectionTitle>
+          <Link href="/category/mouses">Mouses</Link>
+        </SectionTitle>
         <ProductsList products={mouses} />
       </div>
     </div>
