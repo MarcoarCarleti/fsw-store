@@ -19,10 +19,12 @@ const Cart = () => {
   const handleFinishPurchaseClick = async () => {
     if (!data?.user) {
       // TODO! redicionar para tela de login
-      return;
+
+      return (window.location.href =
+        "https://fsw-store-virid.vercel.app/api/auth/signin?callbackUrl=https%3A%2F%2Ffsw-store-virid.vercel.app%2F");
     }
 
-   const order = await createOrder(products, (data?.user as any).id);
+    const order = await createOrder(products, (data?.user as any).id);
 
     const checkout = await createCheckout(products, order.id);
 
