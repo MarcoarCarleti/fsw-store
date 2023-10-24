@@ -7,6 +7,7 @@ import {
 import { Card } from "@/components/ui/card";
 import { Prisma } from "@prisma/client";
 import { format } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 import OrderProductItem from "./order-products-item";
 import { Separator } from "@/components/ui/separator";
 import { useMemo } from "react";
@@ -53,7 +54,9 @@ const OrderItem = ({ order }: OrderItemProps) => {
                 Pedido com {order.orderProducts.length} produto(s)
               </p>
               <span className="text-xs opacity-60">
-                Feito em {format(order.createdAt, "d/MM/y 'às' HH:mm")}
+                Feito em {format(order.createdAt, "d/MM/y 'às' HH:mm", {
+                  locale: ptBR
+                })}
               </span>
             </div>
           </AccordionTrigger>
