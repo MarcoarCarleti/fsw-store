@@ -17,9 +17,9 @@ const CategoryProducts = async ({ params }: any) => {
   if (!category) {
     return null;
   }
-  
+
   return (
-    <div className="flex flex-col gap-8 p-5">
+    <div className="flex flex-col gap-8 p-5 xl:px-24 xl:py-5">
       <Badge
         className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem] text-base uppercase"
         variant="outline"
@@ -28,7 +28,7 @@ const CategoryProducts = async ({ params }: any) => {
         {category.name}
       </Badge>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-8 xl:flex">
         {category.products.map((product) => (
           <ProductItem
             key={product.id}
