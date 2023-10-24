@@ -17,7 +17,9 @@ async function OrderPage() {
       userId: (user as any).id,
     },
     include: {
-      orderProducts: true,
+      orderProducts: {
+        include: { product: true },
+      },
     },
   });
 
