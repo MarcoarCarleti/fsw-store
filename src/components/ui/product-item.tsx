@@ -4,14 +4,19 @@ import { Badge } from "./badge";
 import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import DiscountBadge from "./discount-badge";
+import { cn } from "@/lib/utils";
 
 interface ProductItemProps {
   product: ProductsWithTotalPrice;
+  className?: string;
 }
 
-export function ProductItem({ product }: ProductItemProps) {
+export function ProductItem({ product, className }: ProductItemProps) {
   return (
-    <Link href={`/product/${product.slug}`}>
+    <Link
+      href={`/product/${product.slug}`}
+      className={cn("flex min-w-[156px] flex-col gap-4", className)}
+    >
       <div className="flex flex-col gap-4">
         <div className=" relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
           <Image
@@ -19,8 +24,7 @@ export function ProductItem({ product }: ProductItemProps) {
             width={0}
             height={0}
             sizes="100vw"
-            className="h-auto max-h-[70%] w-auto max-w-[80%]"
-            style={{ objectFit: "contain" }}
+            className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
             alt={product.name}
           />
 

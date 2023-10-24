@@ -1,6 +1,7 @@
 "use client";
 
 import { ProductsWithTotalPrice } from "@/helpers/product";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 
 export interface CartProduct extends ProductsWithTotalPrice {
@@ -36,17 +37,14 @@ export const CartContext = createContext<ICartContext>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>([]);
+  const [products, setProducts] = useLocalStorage<CartProduct[]>(
+    "@fsw-store/cart-products",
+    [],
+  );
 
   useEffect(() => {
     localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
   }, [products]);
-
-  useEffect(() => {
-    setProducts(
-      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
-    );
-  }, []);
 
   // Total sem descontos
   const subTotal = useMemo(() => {
