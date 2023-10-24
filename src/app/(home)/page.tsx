@@ -48,7 +48,7 @@ export default async function Home() {
         </picture>
       </Link>
 
-      <div className="xl:px-64">
+      <div className="xl:px-24 2xl:px-64">
         <div className="px-5">
           <Categories />
         </div>
