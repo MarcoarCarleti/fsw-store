@@ -47,3 +47,10 @@
     @apply h-full;
   }
 }
+
+.limit-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
