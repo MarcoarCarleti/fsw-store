@@ -1,6 +1,6 @@
 import { ShoppingCartIcon } from "lucide-react";
 import { Badge } from "./badge";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computeProductTotalPrice } from "@/helpers/product";
@@ -11,12 +11,19 @@ import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import { createOrder } from "@/actions/order";
 import { useSession } from "next-auth/react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Cart = () => {
   const { data } = useSession();
   const { products, subTotal, total, totalDiscount } = useContext(CartContext);
 
+  const [finishPurchase, setFinishPurchase]: any = useState("Finalizar compra");
+  const [disableButton, setDisableButton] = useState(false);
+
   const handleFinishPurchaseClick = async () => {
+    setFinishPurchase(<CircularProgress color="inherit" size={16} />);
+    setDisableButton(true);
+
     if (!data?.user) {
       // TODO! redicionar para tela de login
 
@@ -99,10 +106,11 @@ const Cart = () => {
           </div>
 
           <Button
-            className="mt-7 font-bold uppercase"
+            className="mt-7 font-bold uppercase disabled:cursor-not-allowed"
             onClick={handleFinishPurchaseClick}
+            disabled={disableButton}
           >
-            Finalizar Compra
+            {finishPurchase}
           </Button>
         </div>
       )}
