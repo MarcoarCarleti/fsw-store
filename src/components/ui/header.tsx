@@ -33,7 +33,7 @@ export function Header() {
   const [isWindow, setWindow] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.screen.width >= 1920) {
+    if (typeof window !== "undefined" && window.screen.width >= 1280) {
       setWindow(true);
     }
   }, []);

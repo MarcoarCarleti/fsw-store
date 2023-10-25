@@ -27,7 +27,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
           style={{ objectFit: "contain" }}
         />
       </div>
-      <div className="mt-8 grid grid-cols-4 gap-4 px-5 xl:absolute xl:left-4 xl:top-4 xl:flex xl:flex-col">
+      <div className="my-8 grid grid-cols-4 gap-4 px-5 xl:absolute xl:left-4 xl:top-4 xl:flex xl:flex-col">
         {imageUrls.map((imageUrl) => (
           <button
             key={imageUrl}
